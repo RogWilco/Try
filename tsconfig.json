@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "lib": ["ESNext"],
+    "target": "ES2018",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "baseUrl": "src/",
+    "outDir": "build/",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "sourceRoot": "src/",
+    "removeComments": true,
+    "preserveSymlinks": true,
+    "preserveConstEnums": true,
+    "useDefineForClassFields": true,
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strict": true
+  },
+  "exclude": ["build", "dist"]
+}

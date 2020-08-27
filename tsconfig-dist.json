@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "outDir": "dist/",
+    "declarationMap": false,
+    "sourceMap": false,
+    "sourceRoot": "",
+    "removeComments": true,
+    "preserveConstEnums": false
+  },
+  "extends": "./tsconfig.json",
+  "exclude": ["build", "dist", "**/*.test.ts"]
+}
