@@ -2,33 +2,43 @@ export type Throwable = new () => Error
 export type TryBlock = () => void
 export type CatchBlock = (e: Error) => void
 export type FinallyBlock = () => void
+export type CatchMap = { [key: string]: CatchBlock }
 
 export default function Try (callback: TryBlock) {
   return new Runner().Try(callback)
 }
 
+export function Handle (e: Error, catches: CatchMap) {
+  Runner.Handle(e, catches)
+}
+
+export class Exception extends Error {
+  constructor (message?: string) {
+    super(message)
+    Object.setPrototypeOf(this, new.target.prototype)
+  }
+}
+
 export class Runner {
   try: TryBlock = () => undefined
-  catches: { [key: string]: CatchBlock } = {}
+  catches: CatchMap = {}
   finally: FinallyBlock = () => undefined
 
-  constructor () {}
-
-  private getCatchBlock (e: Error): CatchBlock | undefined {
-    if (e.constructor.name in this.catches) {
-      return this.catches[e.constructor.name]
+  static Handle (e: Error, catches: CatchMap) {
+    if (e.constructor.name in catches) {
+      return catches[e.constructor.name](e)
     }
 
     // Check for a catch block matching a parent class.
     let parent = e.constructor
 
     while ((parent = Object.getPrototypeOf(parent))) {
-      if (parent.name in this.catches) {
-        return this.catches[parent.name]
+      if (parent.name in catches) {
+        return catches[parent.name](e)
       }
     }
 
-    return
+    throw e
   }
 
   Try (callback: TryBlock) {
@@ -50,22 +60,9 @@ export class Runner {
     try {
       this.try()
     } catch (e) {
-      const catchBlock = this.getCatchBlock(e)
-
-      if (!catchBlock) {
-        throw e
-      }
-
-      catchBlock(e)
+      Runner.Handle(e, this.catches)
     } finally {
       this.finally()
     }
-  }
-}
-
-export class Exception extends Error {
-  constructor (message?: string) {
-    super(message)
-    Object.setPrototypeOf(this, new.target.prototype)
   }
 }
