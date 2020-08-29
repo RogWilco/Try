@@ -14,6 +14,23 @@ export class Runner {
 
   constructor () {}
 
+  private getCatchBlock (e: Error): CatchBlock | undefined {
+    if (e.constructor.name in this.catches) {
+      return this.catches[e.constructor.name]
+    }
+
+    // Check for a catch block matching a parent class.
+    let parent = e.constructor
+
+    while ((parent = Object.getPrototypeOf(parent))) {
+      if (parent.name in this.catches) {
+        return this.catches[parent.name]
+      }
+    }
+
+    return
+  }
+
   Try (callback: TryBlock) {
     this.try = callback
     return this
@@ -33,7 +50,7 @@ export class Runner {
     try {
       this.try()
     } catch (e) {
-      const catchBlock = this.catches[e.constructor.name]
+      const catchBlock = this.getCatchBlock(e)
 
       if (!catchBlock) {
         throw e
