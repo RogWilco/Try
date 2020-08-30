@@ -5,12 +5,13 @@ on:
   pull_request:
     branches: [master]
 jobs:
-  build:
+  verify:
+    if: "!contains(github.event.head_commit.message, '[skip ci]') && !startsWith(github.event.head_commit.message, 'Release:')"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Environment (Node 10.x)
+      - name: Environment
         uses: actions/setup-node@v2.1.1
         with:
           node-version: 10.x
@@ -19,10 +20,45 @@ jobs:
         run: npx yarn install --frozen-lockfile
       - name: Tests
         run: yarn test
-      - name: Code Coverage
+      - name: Coverage
         uses: codecov/codecov-action@v1.0.12
         with:
           name: Try
-          token: ${{secrets.CODECOV_TOKEN}}
+          token: ${{ secrets.CODECOV_TOKEN }}
           directory: ./out/coverage/
           fail_ci_if_error: true
+  publish:
+    needs: verify
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Environment
+        uses: actions/setup-node@v2.1.1
+        with:
+          node-version: 10.x
+          check-latest: true
+      - name: Dependencies
+        run: npx yarn install --frozen-lockfile
+      - name: Import GPG
+        id: import_gpg
+        uses: crazy-max/ghaction-import-gpg@v2.2.0
+        with:
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+          PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GPG_KEY_ID: ${{ steps.import_gpg.outputs.keyid }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+          GIT_USERNAME: ${{ steps.import_gpg.outputs.name }}
+          GIT_EMAIL: ${{ steps.import_gpg.outputs.email }}
+          GIT_AUTHOR_NAME: ${{ steps.import_gpg.outputs.name }}
+          GIT_AUTHOR_EMAIL: ${{ steps.import_gpg.outputs.email }}
+          GIT_COMMITTER_NAME: ${{ steps.import_gpg.outputs.name }}
+          GIT_COMMITTER_EMAIL: ${{ steps.import_gpg.outputs.email }}
+        run: npx semantic-release
