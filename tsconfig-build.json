@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "outDir": "build/"
+    "sourceMap": true,
+    "sourceRoot": "src/"
   },
   "extends": "./tsconfig.json",
   "exclude": ["build", "dist", "**/*.test.ts"]

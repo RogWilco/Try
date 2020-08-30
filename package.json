@@ -27,6 +27,7 @@
   "scripts": {
     "build": "tsc --project tsconfig-build.json",
     "dist": "tsc --project tsconfig-dist.json",
+    "docs": "typedoc",
     "watch": "tsc --project tsconfig-build.json --watch",
     "clean": "cat .cleanrc | sed -E '/^#.*$/ d' | sed '/^\\s*$/ d' | xargs rm -rf",
     "test": "jest"

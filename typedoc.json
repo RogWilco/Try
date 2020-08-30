@@ -1,0 +1,9 @@
+{
+  "inputFiles": ["./src"],
+  "mode": "file",
+  "exclude": "**/*.test.ts",
+  "includeVersion": true,
+  "name": "Try",
+  "out": "out/docs",
+  "readme": "README.md"
+}
