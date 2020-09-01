@@ -11,6 +11,15 @@
     "@semantic-release/changelog",
     "@semantic-release/npm",
     [
+      "@qiwi/semantic-release-gh-pages-plugin",
+      {
+        "msg": "Release: ${nextRelease.version}",
+        "src": "out/docs",
+        "dst": ".",
+        "branch": "docs"
+      }
+    ],
+    [
       "@semantic-release/git",
       {
         "assets": ["CHANGELOG.md", "package.json", "yarn.lock"],

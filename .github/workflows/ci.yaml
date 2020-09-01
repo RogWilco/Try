@@ -41,7 +41,9 @@ jobs:
       - name: Dependencies
         run: npx yarn install --frozen-lockfile
       - name: Compile
-        run: npx yarn run dist
+        run: npx yarn dist
+      - name: Documentation
+        run: npx yarn docs
       - name: Import GPG
         id: import_gpg
         uses: crazy-max/ghaction-import-gpg@v2.2.0
