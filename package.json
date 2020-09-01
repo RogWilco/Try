@@ -25,9 +25,7 @@
     "access": "public"
   },
   "main": "dist/index.js",
-  "files": [
-    "dist/**/*"
-  ],
+  "files": ["dist"],
   "scripts": {
     "build": "tsc --project tsconfig-build.json",
     "dist": "tsc --project tsconfig-dist.json",
