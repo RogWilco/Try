@@ -82,7 +82,7 @@ try {
 }
 ```
 
-[npm-image]: https://img.shields.io/npm/v/rogwilco/try?logo=npm&logoColor=white
+[npm-image]: https://img.shields.io/npm/v/@rogwilco/try?logo=npm&logoColor=white
 [npm-url]: https://www.npmjs.com/package/@rogwilco/try
 [ci-image]: https://img.shields.io/github/workflow/status/rogwilco/try/CI?logo=GitHub&logoColor=white
 [ci-url]: https://github.com/RogWilco/try/actions?query=workflow%3ACI
