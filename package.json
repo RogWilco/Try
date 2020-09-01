@@ -1,6 +1,6 @@
 {
   "name": "@rogwilco/try",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "Nick Williams <git@nickawilliams.com>",
   "license": "BSD-3-Clause",
   "description": "A lightweight module that enables scoped catch blocks.",
@@ -25,7 +25,9 @@
     "access": "public"
   },
   "main": "dist/index.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc --project tsconfig-build.json",
     "dist": "tsc --project tsconfig-dist.json",

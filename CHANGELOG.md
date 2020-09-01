@@ -1,3 +1,18 @@
+# [2.0.0](https://github.com/rogwilco/Try/compare/v1.0.0...v2.0.0) (2020-09-01)
+
+
+### Breaking
+
+* Renamed Throwable to ThrowableType to better reflect its purpose. ([3389b54](https://github.com/rogwilco/Try/commit/3389b549519c67680221e1c44aeaa64e1d70ba3e))
+
+### Build
+
+* Ensured TypeScript is actually transpiled during the publish job. ([6e8ccbb](https://github.com/rogwilco/Try/commit/6e8ccbb90be577b8459f87dd2c608dc67cfe097a))
+
+### Docs
+
+* Fixed NPM badge in README. ([e3bfa1d](https://github.com/rogwilco/Try/commit/e3bfa1d86777268b0c3f0ebe8f24fadcaccdd842))
+
 # 1.0.0 (2020-09-01)
 
 
