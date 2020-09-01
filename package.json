@@ -19,7 +19,7 @@
     "url": "git+https://github.com/rogwilco/Try.git"
   },
   "engines": {
-    "node": "10.x"
+    "node": ">=10"
   },
   "publishConfig": {
     "access": "public"
