@@ -2,7 +2,7 @@
  * Represents a constructor of [[Error]] or one of its subclasses. Primarily
  * used when specifying which type of error will be caught.
  */
-export type Throwable = new () => Error
+export type ThrowableType = new () => Error
 
 /**
  * A function containing the code to be executed as part of a try block.
@@ -161,7 +161,7 @@ export class Runner {
    * @param t the type of error handled by the catch block
    * @param callback the function to be executed as the catch block
    */
-  Catch (t: Throwable, callback: CatchBlock) {
+  Catch (t: ThrowableType, callback: CatchBlock) {
     this.catches[t.name] = callback
     return this
   }
