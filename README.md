@@ -20,6 +20,10 @@ A lightweight module that enables typed catch blocks.
 $ npm install @rogwilco/try
 ```
 
+## Documentation
+
+[<img src="https://typedoc.org/images/logo-32.png" width="16"> TypeDoc Documentation][docs-url]
+
 ## Usage
 
 Try can be used in two different styles depending on preference.
@@ -88,3 +92,5 @@ try {
 [ci-url]: https://github.com/RogWilco/try/actions?query=workflow%3ACI
 [coverage-image]: https://img.shields.io/codecov/c/github/rogwilco/try?logo=codecov&logoColor=white
 [coverage-url]: https://codecov.io/gh/rogwilco/try
+[docs-image]: https://rogwilco.github.io/Try/assets/images/logo-32.png
+[docs-url]: https://rogwilco.github.io/Try/globals.html
