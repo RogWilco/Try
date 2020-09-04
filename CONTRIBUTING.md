@@ -2,6 +2,16 @@
 
 ## Style Guides
 
+### Code Format & Style
+
+Code is formatted according to the [JavaScript Standard Style](https://standardjs.com)
+with the added requirement of [dangling commas](https://eslint.org/docs/rules/comma-dangle).
+
+The format is automatically enforced/applied by leveraging ESLint and PrettierX
+via [prettier-standard](https://github.com/sheerun/prettier-standard). This
+means that for the most part, you can rely on automation to properly format your
+code.
+
 ### Commit Messages
 
 Commit messages are constructed according to the following format (consistent
@@ -52,7 +62,8 @@ The type must be one of the following (case sensitive):
 
 _Required_
 
-The title is a brief description of the change which will appear in the CHANGELOG and release notes.
+The title is a brief description of the change which will appear in the
+CHANGELOG and release notes.
 
 #### `issue_reference`
 
