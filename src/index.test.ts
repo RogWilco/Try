@@ -413,7 +413,7 @@ describe('Handle()', () => {
           throw new ExceptionTwo('Waat?')
         } catch (e) {
           Handle(e, {
-            ExceptionOne: catchBlockOne
+            ExceptionOne: catchBlockOne,
           })
         }
       }).toThrow(ExceptionTwo)
@@ -430,7 +430,7 @@ describe('Handle()', () => {
       } catch (e) {
         Handle(e, {
           ExceptionOne: catchBlockOne,
-          ExceptionTwo: catchBlockTwo
+          ExceptionTwo: catchBlockTwo,
         })
       }
 
@@ -447,7 +447,7 @@ describe('Handle()', () => {
         throw new AnotherError('Say whaaaaat?')
       } catch (e) {
         Handle(e, {
-          Error: catchBlock
+          Error: catchBlock,
         })
       }
 

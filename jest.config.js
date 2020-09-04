@@ -5,11 +5,11 @@ module.exports = {
   coverageDirectory: 'out/coverage',
   globals: {
     'ts-jest': {
-      tsConfig: 'tsconfig.json'
-    }
+      tsConfig: 'tsconfig.json',
+    },
   },
   moduleDirectories: ['node_modules', 'src'],
   preset: 'ts-jest',
   testEnvironment: 'node',
-  testMatch: ['**/*.test.ts']
+  testMatch: ['**/*.test.ts'],
 }

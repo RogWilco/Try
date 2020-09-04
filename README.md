@@ -79,7 +79,7 @@ try {
     // This block is only invoked if a TypeError is thrown.
     TypeError: e => {
       console.error(`Type Error: ${e.message}`)
-    }
+    },
   })
 } finally {
   // This block is executed regardless of wheter any errors were caught.
