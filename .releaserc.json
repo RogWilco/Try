@@ -15,6 +15,7 @@
         "prepare": "yarn format CHANGELOG.md"
       }
     ],
+    "@semantic-release/npm",
     [
       "@qiwi/semantic-release-gh-pages-plugin",
       {
