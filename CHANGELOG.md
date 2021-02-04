@@ -1,3 +1,37 @@
+# [2.1.0](https://github.com/rogwilco/Try/compare/v2.0.0...v2.1.0) (2021-02-04)
+
+
+### Build
+
+* Added extra command following CHANGELOG updates to ensure the document is formatted using prettier-standard. ([2d93600](https://github.com/rogwilco/Try/commit/2d93600b66e930bb586619d4d686080f51ae312b))
+* Added prettier-standard for linting and formatting. ([5545114](https://github.com/rogwilco/Try/commit/5545114b99515dcf24610d85adefd67873b32c91))
+* Disabling npm publish for this release. ([02b867a](https://github.com/rogwilco/Try/commit/02b867aaacf0d9c6d01d2be674e6eb4285c9ffb2))
+* Fixed incorrectly named secret reference. ([992e7f8](https://github.com/rogwilco/Try/commit/992e7f8941d2e9cbb6ce7138fa8d5553b81bc54c))
+* Set up automatic publishing of generated TypeDoc docs to GitHub Pages. ([82ea07e](https://github.com/rogwilco/Try/commit/82ea07e333d3fe7e9da9af0e4a6e394f98b4eaf4))
+* Updated CI config to accommodate changes in crazy-max/ghaction-import-gpg. ([09db0b0](https://github.com/rogwilco/Try/commit/09db0b061c1c6e5fcc9468a6106d1826f38ff853))
+* Upgraded outdated GitHub actions for publish job. ([21d863c](https://github.com/rogwilco/Try/commit/21d863c6fb4bd5e8f2f8cd1ce6d141da429f2801))
+* Upgraded outdated GitHub actions. ([4213305](https://github.com/rogwilco/Try/commit/42133058c4ef39cb88c3be4ae48bea829714f14a))
+
+### Chore
+
+* Applied formatting to existing files. ([0c4932f](https://github.com/rogwilco/Try/commit/0c4932f4c818a111031913a2f34195dd97ca165a))
+* Updated supported node version to >=10. ([c1eb41f](https://github.com/rogwilco/Try/commit/c1eb41f5e347df7ee0f8b01234904f001e50c923))
+
+### Docs
+
+* Added CONTRIBUTING with instructions for formatting commit messages. ([1f15034](https://github.com/rogwilco/Try/commit/1f15034e635db6113d8ae25ff1b71d3587c29237))
+* Added link to TypeDoc generated docs. ([f37f7a5](https://github.com/rogwilco/Try/commit/f37f7a504a80c17b7bc22cd270bf3ca4fe2df7e1))
+* Removed some wording that only applied to ESLint. ([5f808d4](https://github.com/rogwilco/Try/commit/5f808d41df88b59884063f14aca020d838fd3477))
+* Updated CONTRIBUTING to include code style/format information. ([8b8efd4](https://github.com/rogwilco/Try/commit/8b8efd4f59f11b8257314d86c5df4bf760815367))
+
+### New
+
+* Added Rethrow() utility function for simplifying catch blocks that simply rethrow another type of throwable. ([3557959](https://github.com/rogwilco/Try/commit/3557959278fcc00394e78f22831228a91e412086))
+
+### Upgrade
+
+* Updated dependency @qiwi/semantic-release-gh-pages-plugin from 4.0.3 => 5.0.4 ([b53d0d0](https://github.com/rogwilco/Try/commit/b53d0d07f56e7bcccb0306d22558d04a6547ebc9))
+
 # [2.0.0](https://github.com/rogwilco/Try/compare/v1.0.0...v2.0.0) (2020-09-01)
 
 ### Breaking
