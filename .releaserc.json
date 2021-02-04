@@ -15,14 +15,14 @@
         "prepare": "yarn format CHANGELOG.md"
       }
     ],
-    "@semantic-release/npm",
     [
       "@qiwi/semantic-release-gh-pages-plugin",
       {
         "msg": "Release: ${nextRelease.version}",
         "src": "out/docs",
         "dst": ".",
-        "branch": "docs"
+        "branch": "docs",
+        "pullTagsBranch": ""
       }
     ],
     [
