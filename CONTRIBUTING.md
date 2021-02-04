@@ -46,8 +46,7 @@ _Required_
 The type must be one of the following (case sensitive):
 
 - `Fix` - For a bug fix.
-- `Update` - Either for a backwards-compatible enhancement or for a rule change
-  that adds reported problems.
+- `Update` - For a backwards-compatible enhancement.
 - `New` - Implemented a new feature.
 - `Breaking` - For a backwards-incompatible enhancement or feature.
 - `Docs` - Changes to documentation only.
