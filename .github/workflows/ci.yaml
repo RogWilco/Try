@@ -50,7 +50,6 @@ jobs:
         with:
           git-user-signingkey: true
           git-commit-gpgsign: true
-        env:
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
       - name: Release
