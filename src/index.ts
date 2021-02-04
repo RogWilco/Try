@@ -2,14 +2,14 @@
  * Represents a constructor of [[Error]] or one of its subclasses. Primarily
  * used when specifying which type of error will be caught.
  */
-export type ThrowableType = new () => Error
+export type ThrowableType = new (...args: any[]) => Error
 
 /**
  * A function containing the code to be executed as part of a try block.
  *
  * @category Block
  */
-export type TryBlock = () => void
+export type TryBlock = () => void;
 
 /**
  * A function containing the code to be executed as part of a catch block.
@@ -52,7 +52,7 @@ export type CatchMap = { [key: string]: CatchBlock }
  *
  * @param callback the function to be executed as the try block
  */
-export default function Try (callback: TryBlock) {
+export default function Try(callback: TryBlock) {
   return new Runner().Try(callback)
 }
 
@@ -78,7 +78,7 @@ export default function Try (callback: TryBlock) {
  * @param e the caught error to be handled
  * @param catches the [[CatchBlock]]s to be used for each type of expected error
  */
-export function Handle (e: Error, catches: CatchMap) {
+export function Handle(e: Error, catches: CatchMap) {
   if (e.constructor.name in catches) {
     return catches[e.constructor.name](e)
   }
@@ -96,6 +96,30 @@ export function Handle (e: Error, catches: CatchMap) {
 }
 
 /**
+ * A utility function to simplify creation of a [[CatchBlock]] that rethrows
+ * another type of [[ThrowableType]]. Typically used with [[Handle]].
+ *
+ * ```
+ * try {
+ *   // Do something...
+ * } catch (e) {
+ *   Handle(e, {
+ *     // Rethrows a ReferenceError as a SomeOtherThrowable.
+ *     ReferenceError: Rethrow(SomeOtherThrowable, 'foo', 'bar')
+ *   })
+ * }
+ * ```
+ *
+ * @param throwable the new throwable to be thrown
+ * @param args any arguments to be passed to the throwable's constructor
+ */
+export function Rethrow(throwable: ThrowableType, ...args: unknown[]) {
+  return () => {
+    throw new throwable(...args)
+  }
+}
+
+/**
  * This is the recommended parent class for implenmenting custom exceptions.
  * Extending this class will ensure the prototype chain is preserved in cases
  * where extending the native [[Error]] class would not. <sup>*</sup>
@@ -105,7 +129,7 @@ export function Handle (e: Error, catches: CatchMap) {
  * for context._
  */
 export class Exception extends Error {
-  constructor (message?: string) {
+  constructor(message?: string) {
     super(message)
     Object.setPrototypeOf(this, new.target.prototype)
   }
@@ -150,7 +174,7 @@ export class Runner {
    *
    * @param callback the function to be executed as the try block
    */
-  Try (callback: TryBlock) {
+  Try(callback: TryBlock) {
     this.try = callback
     return this
   }
@@ -161,7 +185,7 @@ export class Runner {
    * @param t the type of error handled by the catch block
    * @param callback the function to be executed as the catch block
    */
-  Catch (t: ThrowableType, callback: CatchBlock) {
+  Catch(t: ThrowableType, callback: CatchBlock) {
     this.catches[t.name] = callback
     return this
   }
@@ -171,7 +195,7 @@ export class Runner {
    *
    * @param callback the function to be executed as the finally block
    */
-  Finally (callback: FinallyBlock) {
+  Finally(callback: FinallyBlock) {
     this.finally = callback
     return this
   }
@@ -180,7 +204,7 @@ export class Runner {
    * Executes a fully initialized [[Runner]]. Any errors thrown that don't have
    * a matching [[CatchBlock]] will automatically be re-thrown.
    */
-  Done () {
+  Done() {
     try {
       this.try()
     } catch (e) {

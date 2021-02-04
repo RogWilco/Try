@@ -1,4 +1,4 @@
-import Try, { Exception, Handle } from './'
+import Try, { Exception, Handle, Rethrow } from './'
 
 class ExceptionOne extends Exception {}
 class ExceptionTwo extends Exception {}
@@ -404,6 +404,32 @@ describe('Try()', () => {
 })
 
 describe('Handle()', () => {
+  describe('Rethrow()', () => {
+    test('Rethrows ExceptionTwo with no constructor arguments when ExceptionOne is handled.', () => {
+      expect(() => {
+        try {
+          throw new ExceptionOne('Wat?')
+        } catch (e) {
+          Handle(e, {
+            ExceptionOne: Rethrow(ExceptionTwo)
+          })
+        }
+      }).toThrow(ExceptionTwo)
+    })
+
+    test('Rethrows ExceptionTwo with some constructor arguments when ExceptionOne is handled.', () => {
+      expect(() => {
+        try {
+          throw new ExceptionOne('Wat?')
+        } catch (e) {
+          Handle(e, {
+            ExceptionOne: Rethrow(ExceptionTwo, 'Wut?')
+          })
+        }
+      }).toThrow(new ExceptionTwo('Wut?'))
+    })
+  })
+
   describe('ExceptionOne, ExceptionTwo', () => {
     test('Results in an uncaught ExceptionTwo when a non-matching ExceptionTwo is thrown.', () => {
       const catchBlockOne = jest.fn()
