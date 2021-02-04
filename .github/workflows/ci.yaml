@@ -54,7 +54,7 @@ jobs:
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
       - name: Release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GPG_KEY_ID: ${{ steps.import_gpg.outputs.keyid }}
           GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
