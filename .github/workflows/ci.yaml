@@ -34,7 +34,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Environment
-        uses: actions/setup-node@v2.1.1
+        uses: actions/setup-node@v2.1.4
         with:
           node-version: 10.x
           check-latest: true
@@ -46,13 +46,13 @@ jobs:
         run: yarn docs
       - name: Import GPG
         id: import_gpg
-        uses: crazy-max/ghaction-import-gpg@v2.2.0
+        uses: crazy-max/ghaction-import-gpg@v3.1.0
         with:
-          git_user_signingkey: true
-          git_commit_gpgsign: true
+          git-user-signingkey: true
+          git-commit-gpgsign: true
         env:
-          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
-          PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
