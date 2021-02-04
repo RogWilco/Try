@@ -39,7 +39,7 @@
     "watch": "tsc --project tsconfig-build.json --watch"
   },
   "devDependencies": {
-    "@qiwi/semantic-release-gh-pages-plugin": "^4.0.3",
+    "@qiwi/semantic-release-gh-pages-plugin": "^5.0.4",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/exec": "^5.0.0",
     "@semantic-release/git": "^9.0.0",
